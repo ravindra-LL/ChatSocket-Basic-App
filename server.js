@@ -20,7 +20,7 @@ server.on('connection', async (socket) => {
   console.log('Client connected');
   const userId = uuidv4();
   // Generate a shorter, more concise username
-  userNames.set(socket, `U${userId.substring(0, 5)}`);
+  userNames.set(socket, `${userId.substring(0, 5)}`);
 
   // Send chat history to the new client
   try {

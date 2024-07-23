@@ -15,6 +15,13 @@
       flex-direction: column;
       height: 100vh;
     }
+    header {
+      background-color: #333;
+      color: white;
+      padding: 10px 20px;
+      text-align: center;
+      font-size: 24px;
+    }
     #messages {
       list-style: none;
       overflow-y: scroll;
@@ -34,7 +41,7 @@
       box-shadow: 0 1px 2px rgba(0,0,0,0.05);
     }
     #messages li.right {
-      background-color: #d1e8f5;
+      background-color: #4c626f;
       margin-left: auto;
       text-align: right;
     }
@@ -42,7 +49,7 @@
       background-color: #f1f1f1;
       text-align: left;
     }
-    #messageInput, #sendButton {
+    #messageInput, #sendButton, #clearButton {
       padding: 12px;
       margin: 10px;
       border: none;
@@ -60,6 +67,13 @@
       font-weight: 500;
       box-shadow: 0 2px 4px rgba(0,0,0,0.2);
     }
+    #clearButton {
+      background-color: #f44336;
+      color: white;
+      cursor: pointer;
+      font-weight: 500;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    }
     #inputArea {
       display: flex;
       padding: 10px;
@@ -69,10 +83,12 @@
   </style>
 </head>
 <body>
+  <header>ChatSocket App</header>
   <ul id="messages"></ul>
   <div id="inputArea">
     <input id="messageInput" placeholder="Type a message..." autocomplete="off">
     <button id="sendButton">Send</button>
+    <button id="clearButton" onclick="clearMessages()">Clear</button>
   </div>
 
   <script>
@@ -128,6 +144,11 @@
       messageItem.className = msg.align; // Use the 'align' property to set class
       messagesList.appendChild(messageItem);
       messagesList.scrollTop = messagesList.scrollHeight; // Scroll to the bottom of the message list
+    }
+
+    function clearMessages() {
+      const messagesList = document.getElementById('messages');
+      messagesList.innerHTML = '';
     }
   </script>
 </body>
